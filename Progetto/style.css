@@ -67,6 +67,16 @@ div {
     margin-top: 25px;
 }
 
+.notification-success{
+    color: #28a745;
+    font-weight: bold;
+}
+
+.notification-error{
+    color: #a72828;
+    font-weight: bold;
+    font-style: italic;
+}
 
 @media screen and (max-width: 600px) {
     body {

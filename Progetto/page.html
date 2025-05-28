@@ -6,6 +6,7 @@
       <link rel="icon" href="{{ url_for('static', filename='Voice2Care.png') }}">
       <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.0/socket.io.js"></script>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
   </head>
 
@@ -14,6 +15,8 @@
       <p style="display: none;">{{urlServer}}</p>
 
       <script>
+        const socket = io();        
+
         var my_div = document.createElement("DIV");
         var my_p = document.createElement("P");
         var my_btn = document.createElement("BUTTON");
@@ -47,9 +50,6 @@
             //Invia URL dell'audio al server Colab
             preview.controls = true;
             preview.src = url;
-
-            
-
 
             reader = new FileReader();
             reader.readAsDataURL(e.data);
@@ -107,7 +107,6 @@
 
                         setTimeout(() => {
                           divInput.removeChild(message);
-                          my_div.removeChild(preview)
                         }, 2000); 
                         
 
@@ -118,12 +117,35 @@
 
                     }
 
-                    
                     requestPDF.open("POST", urlServer+"/send_json", true)
                     requestPDF.setRequestHeader("Content-Type", "application/json")
                     requestPDF.send(textarea.value)
                   }
 
+
+                  socket.on('completed', function(data) {
+                      console.log('Messaggio arrivato!')
+                      const newNotification = document.createElement('div');
+                      newNotification.className = 'notification-success';
+                      newNotification.innerText = 'PDF compilato correttamente!';
+                      divInput.appendChild(newNotification);
+
+                      setTimeout (()=> {
+                        divInput.removeChild(newNotification);
+                      }, 3500)
+                  });
+
+                  socket.on('error', function(data) {
+                      console.log('Messaggio arrivato!')
+                      const newNotification = document.createElement('div');
+                      newNotification.className = 'notification-error';
+                      newNotification.innerText = 'PDF non compilato! Non modificare le chiavi dei campi.';
+                      divInput.appendChild(newNotification);
+
+                      setTimeout (()=> {
+                        divInput.removeChild(newNotification);
+                      }, 3500)
+                  });
 
                   const alertMessage = document.createElement("P");
                   alertMessage.setAttribute("class", "warning");
