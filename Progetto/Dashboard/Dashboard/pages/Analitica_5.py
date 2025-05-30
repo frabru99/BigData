@@ -1,0 +1,1 @@
+#Trovare per ogni sesso quali sono le lesioni maggiormente riscontrate
