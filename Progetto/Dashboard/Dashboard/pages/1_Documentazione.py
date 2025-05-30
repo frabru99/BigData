@@ -1,13 +1,33 @@
+import streamlit as st
+from utils import bullet_list
+
+st.set_page_config(
+    page_title="Documentazione",
+    page_icon="🗒️",
+    layout="wide"
+)
+
+st.markdown("<h2 style='text-align: center;'>Documentazione del progetto<br>di Big Data Engineering</h3>", unsafe_allow_html=True)
+st.markdown("<h4 style='text-align: center;'>Anno 2024/2025</h6>", unsafe_allow_html=True)
+
+st.write("Boccarossa Antonio M63001643")
+st.write("Brunello Francesco M63001655")
+
+st.markdown("<br>", unsafe_allow_html=True)
+
+st.markdown("""
+
 
 # Voice2Care - A voice for Health
   **Boccarossa Antonio M63001643** 
   
   **Brunello Francesco M63001655**
+""")
 
-<img src="Dashboard/Dashboard/static/img/Voice2Care.png" alt="image" width="200" height="auto">
+st.image("Dashboard/Dashboard/static/img/Voice2Care.png", width=200)
 
 
-
+st.markdown("""
 ## ❓ Problema
 
 Nel contesto sanitario, soprattutto nei reparti di emergenza, il personale medico è spesso costretto a trascrivere manualmente annotazioni cliniche in condizioni di stress e urgenza. Questo processo è:
@@ -24,8 +44,12 @@ _Voice2Care - A voice for health_ è un sistema integrato che automatizza il pro
 - La visualizzazione di analitiche utili sui dati raccolti.
 
 ## 🧱 Architettura del Sistema
-!["Structure"](Dashboard/Dashboard/static/img/BigDataStructure.jpg)
+""")
 
+st.image("Dashboard/Dashboard/static/img/BigDataStructure.jpg")
+
+st.markdown(
+"""
 1. Voce del Medico catturata da interfaccia Web-Based
 2. Server-Side
    1. **Speech-to-Text**
@@ -67,10 +91,16 @@ _Voice2Care - A voice for health_ è un sistema integrato che automatizza il pro
    - Avvia la dashboard con: `streamlit run HomePage.py`
   
 ### 🕸️ Web Page
-!["Web Page"](Dashboard/Dashboard/static/img/ScreenShot_1.png)
-!["Web Page"](Dashboard/Dashboard/static/img/ScreenShot_2.png)
-!["Web Page"](Dashboard/Dashboard/static/img/ScreenShot_3.png)
+""")
 
+
+st.image("Dashboard/Dashboard/static/img/ScreenShot_1.png", width= 500)
+st.image("Dashboard/Dashboard/static/img/ScreenShot_2.png", width= 500)
+st.image("Dashboard/Dashboard/static/img/ScreenShot_3.png", width= 500)
+
+
+
+st.markdown("""
 ## 🧪 Esempi d’Uso
 
 - Chiamata al pronto soccorso: voce medico → trascrizione e generazione del documento.
@@ -98,3 +128,7 @@ _Voice2Care - A voice for health_ è un sistema integrato che automatizza il pro
 - MongoDB - Database NoSQL  
 - Streamlit - Dashboard UI  
 - pymupdf, pyPDF2 - Generazione PDF
+
+             """)
+
+st.markdown("</br>", unsafe_allow_html=True)

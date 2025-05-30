@@ -123,30 +123,6 @@
                   }
 
 
-                  socket.on('completed', function(data) {
-                      console.log('Messaggio arrivato!')
-                      const newNotification = document.createElement('div');
-                      newNotification.className = 'notification-success';
-                      newNotification.innerText = 'PDF compilato correttamente!';
-                      divInput.appendChild(newNotification);
-
-                      setTimeout (()=> {
-                        divInput.removeChild(newNotification);
-                      }, 3500)
-                  });
-
-                  socket.on('error', function(data) {
-                      console.log('Messaggio arrivato!')
-                      const newNotification = document.createElement('div');
-                      newNotification.className = 'notification-error';
-                      newNotification.innerText = 'PDF non compilato! Non modificare le chiavi dei campi.';
-                      divInput.appendChild(newNotification);
-
-                      setTimeout (()=> {
-                        divInput.removeChild(newNotification);
-                      }, 3500)
-                  });
-
                   const alertMessage = document.createElement("P");
                   alertMessage.setAttribute("class", "warning");
                   alertMessage.innerHTML = "Controllare i dati e accuratamente il campo 'data'. Deve essere riportata nel formato seguente: '21 maggio 2002'."
@@ -160,6 +136,8 @@
 
                 }
               };
+
+             
 
 
               
@@ -184,8 +162,31 @@
 
           };
         
+        socket.on('completed', function(data) {
+                console.log('Messaggio arrivato!')
+                const newNotification = document.createElement('div');
+                newNotification.className = 'notification-success';
+                newNotification.innerText = 'PDF compilato correttamente!';
+                my_div.appendChild(newNotification);
+
+                setTimeout (()=> {
+                  my_div.removeChild(newNotification);
+                }, 3500)
+            });
+
+        socket.on('error', function(data) {
+            console.log('Messaggio arrivato!')
+            const newNotification = document.createElement('div');
+            newNotification.className = 'notification-error';
+            newNotification.innerText = 'PDF non compilato! Non modificare le chiavi dei campi.';
+            my_div.appendChild(newNotification);
+
+            setTimeout (()=> {
+              my_div.removeChild(newNotification);
+            }, 3500)
+        });
         
-      
+        
         function toggleRecording() {
           if (recorder && recorder.state == "recording") {
               recorder.stop();
