@@ -34,7 +34,7 @@ def carica_pdf_per_anno(selected_year):
     db=client[selected_year] #accedo al db scelto dall'utente
     pdf_data_list = [] #mi salvo tutti i pdf decodificati
 
-    months = db.list_collection_names()
+    months = sorted(db.list_collection_names())
     with col4:
         month = st.selectbox(" ", months, index=None, placeholder="Scegli il mese desiderato...")
 
@@ -44,7 +44,8 @@ def carica_pdf_per_anno(selected_year):
 
     st.markdown("\n")
     for collection_name in months: #ciclo su tutte le collezioni di quel db scelto
-        collection=db[collection_name].find() #recupero tutti i documenti
+        collection=db[collection_name].find({}, {"_id": 1, "cognome_nome":1, "sesso": 1, "pdf": 1, "pdf_aggiornato": 1, "nato_il": 1, "residente_a": 1, "data": 1, "condizione_riferita":1}).sort("data", 1) #recupero tutti i documenti
+
         st.markdown(f"---")
         st.markdown(f"## :gray[_{collection_name.split("_")[1].capitalize()}_]")
 
@@ -53,10 +54,11 @@ def carica_pdf_per_anno(selected_year):
             cognome_paziente = doc['cognome_nome'].split(" ")[0]
             nome_paziente = doc['cognome_nome'].split(" ")[1]
             
+            
             if "maschile" in doc["sesso"] or "maschio" in doc["sesso"]:
-                st.markdown(f"### {cognome_paziente} {nome_paziente} :male_sign:")
+                st.markdown(f"### {cognome_paziente} {nome_paziente} :male_sign: ")
             elif "femminile" in doc["sesso"] or "femmina" in doc["sesso"]:
-                st.markdown(f"### {cognome_paziente} {nome_paziente} :female_sign:")
+                st.markdown(f"### {cognome_paziente} {nome_paziente} :female_sign: ")
             else:
                 st.markdown(f"### {cognome_paziente} {nome_paziente} ")
 

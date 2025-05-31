@@ -14,7 +14,6 @@ st.title("Analitica :two: - Riportare il numero di pazienti che hanno una o più
 #mi estrapolo tutte le possibili lesioni (da tutti i db e da tutte le collezioni di ciascun db)
 lesioni = ["amputazione","deformita","dolore","emorragia","ferita profonda","ferita superficiale","trauma chiuso","ustione","deficit motorio","sensibilità assente","frattura","lussazione"]
 
-print(dbs_new)
 
 #questa lista conterrà tutti i pazienti che hanno una di quelle specifiche lesioni selezionate dall'utente
 pazienti_con_lesioni = []
@@ -22,6 +21,7 @@ lesioni_selezionate = st.multiselect(
     "Scegli una o più lesioni:",
     lesioni,
     default=[],
+    placeholder="Scegli almeno una opzione..."
 )
 
 lesioni_with_no_patients = []
@@ -34,7 +34,8 @@ def query_with_push():
     for dbs in dbs_new: #per ogni database nel cluster
         db = client[dbs] #mi salvo l'i-mo db
         for collection_name in db.list_collection_names(): #per ogni collezione in uno specifico db
-            collection = db[collection_name].find() #mi recupero ogni collezione nel db
+            collection = db[collection_name].find({}, {"_id": 0, "lesioni_riscontrate": 1, "data": 1, "cognome_nome": 1}) #mi recupero ogni collezione nel db
+
             for doc in collection:
                 lesioni_str=doc.get('lesioni_riscontrate')
                 #verifico se 'lesioni_riscontrate' sia una stringa ed esista
@@ -56,9 +57,6 @@ def query_with_push():
                         #se la seguente lesione non è presente nella lista delle lesioni dell'intero cluster, allora la pusho
                         if lesione not in lesioni_all_collections_and_dbs:
                             lesioni_all_collections_and_dbs.append(lesione)
-
-
-    
 
 #print(lesioni_all_collections_and_dbs)
 def plot_optimization():
