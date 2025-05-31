@@ -1,9 +1,13 @@
 import streamlit as st
 import pandas as pd
-import seaborn as sns
-import matplotlib.pyplot as plt
-import altair as alt
 from utils import client, dbs_new
+
+
+st.set_page_config(
+    page_title="Analitica 1",
+    page_icon="",
+    layout="wide"
+)
 
 st.title("Analitica 2 - Riportare il numero di pazienti che hanno una o più specifiche lesioni per ogni anno, tramite istogramma")
 
@@ -57,7 +61,6 @@ def query_with_push():
     
 
 #print(lesioni_all_collections_and_dbs)
-
 def plot_optimization():
     global lesioni_all_collections_and_dbs
     global lesioni_with_no_patients

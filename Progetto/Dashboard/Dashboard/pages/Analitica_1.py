@@ -1,5 +1,5 @@
 import streamlit as st
-import pymongo, re
+import pymongo
 import base64, os
 from utils import client, dbs_new
 from geopy.geocoders import Nominatim
@@ -15,7 +15,7 @@ st.set_page_config(
     layout="wide"
 )
 
-st.title('Analitica :one: - Recupero di tutti i documenti di uno specifico anno e mese')
+st.title('Analitica :one: - Recupero di tutti i documenti per uno specifico anno e mese')
 
 #id globale univoco per discriminare i documenti
 ids = 0

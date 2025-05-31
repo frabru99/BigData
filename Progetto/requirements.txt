@@ -1,0 +1,6 @@
+streamlit
+pandas
+numpy
+pybase64
+pymongo
+geopy
