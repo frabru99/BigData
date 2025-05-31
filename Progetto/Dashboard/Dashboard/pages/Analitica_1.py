@@ -18,7 +18,7 @@ st.set_page_config(
     layout="wide"
 )
 
-st.title('Analitica :one: - Recupero di tutti i documenti per uno specifico anno e mese')
+st.title('Analitica :one: - Recupero di tutti i documenti per uno specifico anno e mese, con mappa delle residenze.')
 
 #id globale univoco per discriminare i documenti
 ids = 0
@@ -72,6 +72,7 @@ def carica_pdf_per_anno(selected_year):
             with col1:
                 st.markdown(f"_Nato il_: {doc["nato_il"]}")
                 st.markdown(f"_Residente a_: {doc["residente_a"]}") 
+                
                 city_list.append(doc["residente_a"])
 
             with col2:

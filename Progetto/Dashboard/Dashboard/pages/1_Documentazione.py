@@ -88,7 +88,7 @@ st.markdown(
 
 3. Avvia i componenti:
    - Avvia il notebook e accedi alla pagina wev esposta da ngrok.
-   - Avvia la dashboard con: `streamlit run HomePage.py`
+   - Naviga fino alla cartella "Progetto" e avvia la dashboard con: `streamlit run /Dashboard/Dashboard/HomePage.py`
   
 ### 🕸️ Web Page
 """)

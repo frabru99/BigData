@@ -63,8 +63,11 @@ _Voice2Care - A voice for health_ è un sistema integrato che automatizza il pro
    - `pip install -r requirements.txt`
 
 3. Avvia i componenti:
-   - Avvia il notebook e accedi alla pagina wev esposta da ngrok.
-   - Avvia la dashboard con: `streamlit run HomePage.py`
+   1. Per il Notebook:
+      - Apri il notebook, inserisci i tuoi secrets, avvialo e accedi alla pagina web esposta da ngrok.
+   2. Per la Dashborad:
+      - Creare il proprio file `.env` in cui inserie il `MONGO_USER` e la `MONGO_PASSWORD`,
+      - Naviga fino alla cartella "Progetto" e avvia la dashboard con: `streamlit run /Dashboard/Dashboard/HomePage.py`.
   
 ### 🕸️ Web Page
 !["Web Page"](Dashboard/Dashboard/static/img/ScreenShot_1.png)
@@ -85,11 +88,11 @@ _Voice2Care - A voice for health_ è un sistema integrato che automatizza il pro
 - PDF
 
 ## 📈 Analitiche
-- **Analitica 1**: 
-- **Analitica 2**:
-- **Analitica 3**:
-- **Analitica 4**:
-- **Analitica 5**:
+- **Analitica 1**: **Questa sezione permette di recuperare le _informazioni utili in base all'anno e al mese specificato_. E' possibile consultare anche una :green[_Mappa delle Residenze_] in base al filtro specificato.**
+- **Analitica 2**: **Questa sezione permette di recuperare informazioni per quanto riguarda la quantità di pazienti che hanno _contratto certe :red[lesioni]_ che è possibile specificare.**
+- **Analitica 3**: **Questa sezione permette di valutare come evolte il :grey[tempo medio di servizio] (per anno) inteso come, _ora sul posto - ora chiamata_ in base alla città scelta**
+- **Analitica 4**: **Questa sezoione permette di valutare quali sono i _:blue[provvedimenti] più utilizzati_ in base all'anno scelto.**
+- **Analitica 5**: **Questa sezione permette di valutare quale è la :violet[Frequenza Cardiaca Media] presente nel DataBase in base al sesso specificato, con la possibilità di specificare l'anno e il mese di interesse.**
 
 ## 🛠️ Tecnologie Utilizzate
 
