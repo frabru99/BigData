@@ -4,12 +4,12 @@ from utils import client, dbs_new
 
 
 st.set_page_config(
-    page_title="Analitica 1",
-    page_icon="",
+    page_title="Analitica 2",
+    page_icon="⛑️",
     layout="wide"
 )
 
-st.title("Analitica 2 - Riportare il numero di pazienti che hanno una o più specifiche lesioni per ogni anno, tramite istogramma")
+st.title("Analitica :two: - Riportare il numero di pazienti che hanno una o più specifiche lesioni per ogni anno, tramite istogramma")
 
 #mi estrapolo tutte le possibili lesioni (da tutti i db e da tutte le collezioni di ciascun db)
 lesioni = ["amputazione","deformita","dolore","emorragia","ferita profonda","ferita superficiale","trauma chiuso","ustione","deficit motorio","sensibilità assente","frattura","lussazione"]
