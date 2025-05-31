@@ -65,8 +65,15 @@ _Voice2Care - A voice for health_ è un sistema integrato che automatizza il pro
 3. Avvia i componenti:
    1. Per il Notebook:
       - Apri il notebook, inserisci i tuoi secrets, avvialo e accedi alla pagina web esposta da ngrok.
+      - I secret da inserire sono:
+        - `GEMINI_API`
+        - `MONGO_USER`
+        - `MONGO_PASSWORD`
+        - `NGROK_API`
    2. Per la Dashborad:
-      - Creare il proprio file `.env` in cui inserie il `MONGO_USER` e la `MONGO_PASSWORD`,
+      - Creare il proprio file `.env` che dovrà contenere
+        - `MONGO_USER`
+        - `MONGO_PASSWORD`
       - Naviga fino alla cartella "Progetto" e avvia la dashboard con: `streamlit run /Dashboard/Dashboard/HomePage.py`.
   
 ### 🕸️ Web Page
