@@ -4,3 +4,4 @@ numpy
 pybase64
 pymongo
 geopy
+deep_translator

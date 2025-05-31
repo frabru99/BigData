@@ -42,9 +42,11 @@ def query_with_push():
                 if lesioni_str and isinstance(lesioni_str, str):
                 #inserisco nella lista di lesioni tutte le
                 #lesioni_db = [l.strip() for l in lesioni_str.split(', ') if l.strip()]
-                    lesioni_db = [les.strip() for les in lesioni_str.split(", ")] 
+                    lesioni_db = [les.strip() for les in lesioni_str.split(", ")]
+
                 else:
                     lesioni_db = []
+
                 if any(lesione_selezionata in lesioni_db for lesione_selezionata in lesioni_selezionate): #verifico se almeno una delle lesioni selezionate sia presente in uno specifico paziente
                 #print(lesioni_db)
                     paziente=doc['cognome_nome'] #mi estrapolo il suo nome e cognome

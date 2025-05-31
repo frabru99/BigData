@@ -17,6 +17,8 @@ st.title("Analitica :four: - Il numero di provvedimenti utilizzati in ambito res
 selected_year = st.selectbox(" ", dbs_new, index=None, placeholder="Scegli l'anno desiderato...")
 
 
+
+
 def countProvvedimento(selected_year, prov):
     db = client[selected_year]
     provvedimenti  = getProvvedimentiComitato("venezia")[prov]
@@ -27,9 +29,11 @@ def countProvvedimento(selected_year, prov):
         collection = db[collection_name].find({}, {"_id": 0, prov: 1})
 
         for doc in collection:
-            if doc[prov] in provvedimenti:
-                countProv[doc[prov]]  += 1 
+            provs_lists= [les.strip() for les in doc[prov].split(", ")]
 
+            for prov_elem in provs_lists:
+                if prov_elem in provvedimenti:
+                    countProv[prov_elem]  += 1 
     return countProv
 
 
@@ -65,10 +69,7 @@ def makePlot(mostUsed):
 
     st.altair_chart(chart, use_container_width=True)
     
-    #st.bar_chart(df, x = "area", y="quantità", stack=True)
-
-
-
+    
 
 if selected_year != None:
     mostUsed = prendiProvvedimenti(selected_year)

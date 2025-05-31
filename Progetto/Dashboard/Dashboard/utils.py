@@ -6,7 +6,7 @@ provvedimenti = {
     "venezia": {
      "provs": ["respiro", "circolo", "immobilizzazione", "provvedimenti_altro"], 
      "respiro": ["aspirazione", "cannula orofaringea", "monitor spO2", "ossigeno", "ventilazione", "intubazione"],
-     "circolo":  ["emostasi", "accesso venoso", "ecg" ,"nibp", "dae"], 
+     "circolo":  ["emostasi", "accesso venoso", "ecg", "nibp", "monitor ecg", "monitor nibp", "dae"], 
      "immobilizzazione": ["collare cervicale", "KED", "barella cucchiaio", "tavola spinale", "steccobenda", "materassino"],
      "provvedimenti_altro":  ["coperta termica", "medicazione", "ghiaccio",  "osservazione"]
     }

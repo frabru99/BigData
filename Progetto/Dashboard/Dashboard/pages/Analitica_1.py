@@ -6,6 +6,9 @@ from geopy.geocoders import Nominatim
 from pprint import pprint
 import pandas as pd
 import numpy as np
+from datetime import datetime
+from deep_translator import GoogleTranslator
+
 
 app = Nominatim(user_agent="tutorial")
 
@@ -33,8 +36,10 @@ def carica_pdf_per_anno(selected_year):
     print(selected_year) #debug
     db=client[selected_year] #accedo al db scelto dall'utente
     pdf_data_list = [] #mi salvo tutti i pdf decodificati
+    
+    #Oridnamento delle collezioni in base al mese
+    months = sorted(db.list_collection_names(), key= lambda month: datetime.strptime(GoogleTranslator(source="it", target="en").translate(month.split("_")[1].capitalize()), "%B"))
 
-    months = sorted(db.list_collection_names())
     with col4:
         month = st.selectbox(" ", months, index=None, placeholder="Scegli il mese desiderato...")
 
