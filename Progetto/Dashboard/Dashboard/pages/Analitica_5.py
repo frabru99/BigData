@@ -8,7 +8,7 @@ from deep_translator import GoogleTranslator
 
 st.set_page_config(
     page_title="Analitica 5",
-    page_icon = "⚤",
+    page_icon = "⚧️",
     layout="wide"
 )
 

@@ -1,5 +1,4 @@
 import streamlit as st
-from utils import bullet_list
 
 st.set_page_config(
     page_title="Documentazione",
@@ -87,10 +86,18 @@ st.markdown(
    - `pip install -r requirements.txt`
 
 3. Avvia i componenti:
-   - Avvia il notebook e accedi alla pagina wev esposta da ngrok.
-   - Naviga fino alla cartella "Progetto" e avvia la dashboard con: `streamlit run /Dashboard/Dashboard/HomePage.py`
-  
-### 🕸️ Web Page
+   1. Per il Notebook:
+      - Apri il notebook, inserisci i tuoi secrets, avvialo e accedi alla pagina web esposta da ngrok.
+      - I secret da inserire sono:
+        - `GEMINI_API`
+        - `MONGO_USER`
+        - `MONGO_PASSWORD`
+        - `NGROK_API`
+   2. Per la Dashborad:
+      - Creare il proprio file `.env` che dovrà contenere
+        - `MONGO_USER`
+        - `MONGO_PASSWORD`
+      - Naviga fino alla cartella "Progetto" e avvia la dashboard con: `streamlit run /Dashboard/Dashboard/HomePage.py`.
 """)
 
 
@@ -115,11 +122,12 @@ st.markdown("""
 - PDF
 
 ## 📈 Analitiche
-- **Analitica 1**: 
-- **Analitica 2**:
-- **Analitica 3**:
-- **Analitica 4**:
-- **Analitica 5**:
+- **Analitica 1**: **Questa sezione permette di recuperare le _informazioni utili in base all'anno e al mese specificato_. E' possibile consultare anche una :green[_Mappa delle Residenze_] in base al filtro specificato.**
+- **Analitica 2**: **Questa sezione permette di recuperare informazioni per quanto riguarda la quantità di pazienti che hanno _contratto certe :red[lesioni]_ che è possibile specificare.**
+- **Analitica 3**: **Questa sezione permette di valutare come evolte il :grey[tempo medio di servizio] (per anno) inteso come, _ora sul posto - ora chiamata_ in base alla città scelta**
+- **Analitica 4**: **Questa sezoione permette di valutare quali sono i _:blue[provvedimenti] più utilizzati_ in base all'anno scelto.**
+- **Analitica 5**: **Questa sezione permette di valutare quale è la :violet[Frequenza Cardiaca Media] presente nel DataBase in base al sesso specificato, con la possibilità di specificare l'anno e il mese di interesse.**
+
 
 ## 🛠️ Tecnologie Utilizzate
 
