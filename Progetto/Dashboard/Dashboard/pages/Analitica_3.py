@@ -26,10 +26,10 @@ def retrieve_documents():
     for dbs in dbs_new:
         db = client[dbs] #accedo al db i-mo
         for collection_name in db.list_collection_names(): #itero sulle collezioni dell'i-mo db
-            collection = db[collection_name].find({},{'_id':0,'residente_a': 1})
+            collection = db[collection_name].find({},{'_id':0,'luogo_intervento': 1})
             for doc in collection: #itero su ogni documento di quella collezione
-                if doc['residente_a'] not in residenze_all_patients: #verifico se quella città non è stata già salvata
-                    residenze_all_patients.append(doc['residente_a'])
+                if doc['luogo_intervento'] not in residenze_all_patients: #verifico se quella città non è stata già salvata
+                    residenze_all_patients.append(doc['luogo_intervento'])
 
 def localization():
     try:
@@ -47,13 +47,14 @@ def save_service_times(city_selected, formato_data):
     for dbs in dbs_new:
         db = client[dbs]
         for collection_name in db.list_collection_names():
-            collection = db[collection_name].find({},{'_id':0, 'residente_a': 1, 'data': 1, 'h_chiamata': 1, 'h_sul_posto': 1})
+            collection = db[collection_name].find({},{'_id':0, 'luogo_intervento': 1, 'data': 1, 'h_chiamata': 1, 'h_sul_posto': 1})
             for doc in collection:
-                if doc['residente_a'] == city_selected:
+                if doc['luogo_intervento'] == city_selected:
                     #mi salvo ora chiamata e ora sul posto
                     if doc['h_chiamata'] != " " and doc['h_sul_posto'] != " ":
                         h_call = doc['h_chiamata']
                         h_place = doc['h_sul_posto']
+
                         mese = doc['data'].split(" ")[1]
                         anno = doc['data'].split(" ")[2]
                         h_call_converted = datetime.strptime(h_call,formato_data)
@@ -128,6 +129,7 @@ retrieve_documents()
 
 #selectbox per far scegliere la città
 city_selected = st.selectbox(" ",residenze_all_patients, index=None, placeholder="Scegli la città...")
+st.warning("Se nei documenti non sono presenti i campi 'h_sul_posto' o 'h_chiamata', questi non saranno inclusi all'interno dell'analisi.", icon="⚠️")
 
 if city_selected:
 
